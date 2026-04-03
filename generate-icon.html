@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Icons</title>
+</head>
+<body>
+  <script>
+    function drawIcon(size) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const s = size / 48;
+
+      ctx.scale(s, s);
+
+      const gradient = ctx.createLinearGradient(0, 0, 48, 48);
+      gradient.addColorStop(0, '#1A73E8');
+      gradient.addColorStop(1, '#4A9EFF');
+      ctx.fillStyle = gradient;
+
+      const r = 10;
+      ctx.beginPath();
+      ctx.moveTo(r, 0);
+      ctx.lineTo(48 - r, 0);
+      ctx.quadraticCurveTo(48, 0, 48, r);
+      ctx.lineTo(48, 48 - r);
+      ctx.quadraticCurveTo(48, 48, 48 - r, 48);
+      ctx.lineTo(r, 48);
+      ctx.quadraticCurveTo(0, 48, 0, 48 - r);
+      ctx.lineTo(0, r);
+      ctx.quadraticCurveTo(0, 0, r, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = 'white';
+      for (let i = 0; i < 5; i++) ctx.fillRect(10 + i * 6, 14, 4, 4);
+      for (let i = 0; i < 5; i++) ctx.fillRect(10 + i * 6, 20, 4, 4);
+      ctx.fillRect(13, 26, 22, 4);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.fillRect(36, 26, 2, 4);
+
+      return canvas;
+    }
+
+    function download(canvas, filename) {
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+      });
+    }
+
+    [16, 48, 128].forEach(size => download(drawIcon(size), `icon${size}.png`));
+  </script>
+</body>
+</html>

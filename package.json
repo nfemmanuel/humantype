@@ -1,0 +1,11 @@
+{
+  "name": "humantype-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/timing.test.js tests/parser.test.js tests/richtext.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.0"
+  }
+}
