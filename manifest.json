@@ -5,7 +5,9 @@
   "description": "Inject realistic human typing behavior into any text field",
   "action": {
     "default_icon": {
-      "48": "icons/icon48.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
   "side_panel": {
@@ -23,6 +25,8 @@
     }
   ],
   "icons": {
-    "48": "icons/icon48.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
 }
